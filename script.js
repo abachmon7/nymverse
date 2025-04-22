@@ -1,7 +1,6 @@
 import { Connection, PublicKey } from "@solana/web3.js";
 import {
   WalletAdapterNetwork,
-  ConnectionProvider,
   WalletProvider,
 } from "@solana/wallet-adapter-react";
 import {
@@ -9,26 +8,29 @@ import {
   SolflareWalletAdapter,
   TorusWalletAdapter,
 } from "@solana/wallet-adapter-wallets";
+import { WalletModalProvider, WalletModalButton } from "@solana/wallet-adapter-react-ui";
 
 (async () => {
   const tokenAddress = "NYMZrPwuhqWLBv5et9FECfoAbbRoqYB12wjnLcMWDbN";
-  const connectButton = document.getElementById("connect-wallet");
   const messageContainer = document.getElementById("message");
   const magicText = document.getElementById("magic-text");
 
-  connectButton.addEventListener("click", async () => {
-    try {
-      // Inicializa múltiples wallets
-      const wallets = [
-        new PhantomWalletAdapter(),
-        new SolflareWalletAdapter(),
-        new TorusWalletAdapter(),
-      ];
+  // Configuración de wallets disponibles
+  const wallets = [
+    new PhantomWalletAdapter(),
+    new SolflareWalletAdapter(),
+    new TorusWalletAdapter(),
+  ];
 
-      // Conectar usando el wallet seleccionado
-      const wallet = wallets[0]; // Por ejemplo, Phantom
-      await wallet.connect();
+  // Configuración del proveedor de wallets
+  const walletProvider = new WalletProvider(wallets, WalletAdapterNetwork.Mainnet);
 
+  document.addEventListener("DOMContentLoaded", () => {
+    // Renderizar un botón para seleccionar y conectar wallets
+    const walletModalButton = new WalletModalButton(walletProvider);
+    document.body.appendChild(walletModalButton.render());
+
+    walletProvider.on("connect", async (wallet) => {
       const walletAddress = wallet.publicKey.toString();
       console.log("Wallet conectada: ", walletAddress);
 
@@ -50,9 +52,7 @@ import {
       } else {
         alert("No tienes el token requerido para acceder al contenido especial.");
       }
-    } catch (error) {
-      console.error("Error al conectar el wallet: ", error);
-    }
+    });
   });
 
   function typeWriterEffect(text, element) {
