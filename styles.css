@@ -1,0 +1,41 @@
+body {
+  margin: 0;
+  font-family: 'Georgia', serif;
+  background: url('C:\Users\marco\Desktop\matrix\nym copilot web3\public\background.jpg') no-repeat center center fixed;
+  background-size: cover;
+  color: #333;
+}
+
+.container {
+  text-align: center;
+  padding: 50px;
+  background: rgba(255, 255, 255, 0.8);
+  border: 2px solid #d4af37;
+  border-radius: 10px;
+  margin: 100px auto;
+  max-width: 500px;
+}
+
+button {
+  font-size: 18px;
+  padding: 10px 20px;
+  color: #fff;
+  background-color: #8b0000;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #a52a2a;
+}
+
+.hidden {
+  display: none;
+}
+
+#magic-text {
+  font-size: 24px;
+  font-family: 'Courier New', monospace;
+  color: #4b0082;
+}
