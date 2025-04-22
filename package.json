@@ -1,0 +1,26 @@
+{
+  "name": "nymverse",
+  "version": "1.0.0",
+  "description": "",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abachmon7/nymverse.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/abachmon7/nymverse/issues"
+  },
+  "homepage": "https://github.com/abachmon7/nymverse#readme",
+  "dependencies": {
+    "@solana/wallet-adapter-react": "^0.15.36",
+    "@solana/wallet-adapter-react-ui": "^0.9.36",
+    "@solana/wallet-adapter-wallets": "^0.19.34",
+    "@solana/web3.js": "^1.98.1"
+  }
+}
